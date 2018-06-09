@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>JavaScript Content!</title>
+</head>
+<body>
+<div id="mainContent" onclick="pickLetter()">
+
+  <h1>Guess That Letter!</h1>
+
+  <h2 id="wUpdate">Wins:</h2> 
+  <h2 id ="lUpdate">Losses:</h2>
+  <h2 id="gLeft">Guesses Left:</h2>
+  <h2>Guessed:</h2>
+  <h3>I am thinking of a letter. Can you guess it? Click me to start game.</h3>
+  <h3 id="letsGo"></h3>
+  
+
+</div>
+
+<input type="text" id="winz" onkeypress="startGame()">
+
+  <!-- Here we create a generic drink-options div -->
+
+  <script type="text/javascript">
+
+    var wins = 0;
+    var losses = 1;
+    var guessLeft = 5;
+    var guessed= [];
+
+ // display game when any key is pressed 
+ 
+ function pickLetter(){
+    function ranNum(){
+      var alpha = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+      var chooseMan = alpha[Math.floor(Math.random() * alpha.length)];
+      
+
+    return chooseMan;
+    }
+    document.getElementById("letsGo").innerHTML = ranNum();
+    return document.getElementById("letsGo").innerHTML;
+    
+}
+var alpha = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"];
+  var chooseMan = alpha[Math.floor(Math.random() * alpha.length)];
+
+
+  function startGame(){ 
+  
+  
+  
+  if(document.getElementById("winz").value === document.getElementById("letsGo").innerHTML){
+    document.getElementById("wUpdate").innerHTML = "Wins: "+ ++wins ;
+    guessLeft = 5;
+    pickLetter();
+  }
+
+    if(document.getElementById("winz").value != document.getElementById("letsGo").value){
+      if(guessLeft > 1){
+    document.getElementById("gLeft").innerHTML = "Guesses Left: "+ --guessLeft ;
+      }
+      else {
+        guessLeft = 5;
+        document.getElementById("lUpdate").innerHTML = "Losses: "+ losses++ ;
+        document.getElementById("gLeft").innerHTML = "Guesses Left: " + (guessLeft) ;
+      }
+  }
+
+}
+
+ 
+        
+
+  </script>
+
+
+
+</body>
+</html>
